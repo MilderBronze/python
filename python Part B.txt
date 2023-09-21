@@ -1,0 +1,258 @@
+Here are Python programs for the questions you've asked:
+
+1. Program to perform basic arithmetic operations on two integers:
+
+```python
+def perform_operations(a, b):
+    addition = a + b
+    subtraction = a - b
+    multiplication = a * b
+    division = a / b
+    modulo = a % b
+
+    return addition, subtraction, multiplication, division, modulo
+
+num1 = int(input("Enter the first integer: "))
+num2 = int(input("Enter the second integer: "))
+
+add, sub, mul, div, mod = perform_operations(num1, num2)
+
+print(f"Addition: {add}")
+print(f"Subtraction: {sub}")
+print(f"Multiplication: {mul}")
+print(f"Division: {div}")
+print(f"Modulo Division: {mod}")
+```
+
+2. Program to find the greatest number among three numbers:
+
+```python
+def find_greatest(a, b, c):
+    return max(a, b, c)
+
+num1 = int(input("Enter the first number: "))
+num2 = int(input("Enter the second number: "))
+num3 = int(input("Enter the third number: "))
+
+greatest = find_greatest(num1, num2, num3)
+
+print(f"The greatest number is: {greatest}")
+```
+
+3. Program to calculate the roots of a quadratic equation:
+
+```python
+import math
+
+def calculate_roots(a, b, c):
+    discriminant = b**2 - 4*a*c
+    if discriminant > 0:
+        root1 = (-b + math.sqrt(discriminant)) / (2*a)
+        root2 = (-b - math.sqrt(discriminant)) / (2*a)
+        return root1, root2
+    elif discriminant == 0:
+        root1 = root2 = -b / (2*a)
+        return root1
+    else:
+        return "Complex roots"
+
+a = float(input("Enter the coefficient a: "))
+b = float(input("Enter the coefficient b: "))
+c = float(input("Enter the coefficient c: "))
+
+roots = calculate_roots(a, b, c)
+print("Roots:", roots)
+```
+
+4. Program to classify a number as prime or composite:
+
+```python
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+num = int(input("Enter a number: "))
+
+if is_prime(num):
+    print(f"{num} is a prime number.")
+else:
+    print(f"{num} is a composite number.")
+```
+
+5. Program to find a character in a string and print its index:
+
+```python
+def find_char_in_string(char, string):
+    for i in range(len(string)):
+        if string[i] == char:
+            return i
+    return -1
+
+input_string = input("Enter a string: ")
+search_char = input("Enter a character to search for: ")
+
+index = find_char_in_string(search_char, input_string)
+
+if index != -1:
+    print(f"The character '{search_char}' is present at index {index}.")
+else:
+    print(f"The character '{search_char}' is not present in the string.")
+```
+
+6. Program to check if a year is a leap year:
+
+```python
+def is_leap_year(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return True
+    else:
+        return False
+
+year = int(input("Enter a year: "))
+
+if is_leap_year(year):
+    print(f"{year} is a leap year.")
+else:
+    print(f"{year} is not a leap year.")
+```
+
+7. Program to find the GCD of two numbers:
+
+```python
+import math
+
+def find_gcd(a, b):
+    return math.gcd(a, b)
+
+num1 = int(input("Enter the first number: "))
+num2 = int(input("Enter the second number: "))
+
+gcd = find_gcd(num1, num2)
+
+print(f"The GCD of {num1} and {num2} is {gcd}.")
+```
+
+8. Program to work with complex numbers using a class:
+
+```python
+class Complex:
+    def __init__(self, real, imag):
+        self.real = real
+        self.imag = imag
+
+    def add(self, other):
+        real_sum = self.real + other.real
+        imag_sum = self.imag + other.imag
+        return Complex(real_sum, imag_sum)
+
+n = int(input("Enter the number of complex numbers: "))
+complex_numbers = []
+
+for i in range(n):
+    real_part = float(input(f"Enter the real part of complex number {i + 1}: "))
+    imag_part = float(input(f"Enter the imaginary part of complex number {i + 1}: "))
+    complex_numbers.append(Complex(real_part, imag_part))
+
+result = Complex(0, 0)
+
+for num in complex_numbers:
+    result = result.add(num)
+
+print(f"Sum of {n} complex numbers is: {result.real} + {result.imag}i")
+```
+
+9. Program to calculate total marks, percentage, and display a scorecard using a Student class:
+
+```python
+class Student:
+    def __init__(self, name, subject1, subject2, subject3):
+        self.name = name
+        self.subject1 = subject1
+        self.subject2 = subject2
+        self.subject3 = subject3
+
+    def calculate_total(self):
+        return self.subject1 + self.subject2 + self.subject3
+
+    def calculate_percentage(self):
+        total_marks = self.calculate_total()
+        return (total_marks / 300) * 100
+
+    def display_scorecard(self):
+        total_marks = self.calculate_total()
+        percentage = self.calculate_percentage()
+        print(f"Name: {self.name}")
+        print(f"Subject 1: {self.subject1}")
+        print(f"Subject 2: {self.subject2}")
+        print(f"Subject 3: {self.subject3}")
+        print(f"Total Marks: {total_marks}")
+        print(f"Percentage: {percentage:.2f}%")
+
+name = input("Enter student's name: ")
+subject1 = float(input("Enter marks in subject 1: "))
+subject2 = float(input("Enter marks in subject 2: "))
+subject3 = float(input("Enter marks in subject 3: "))
+
+student = Student(name, subject1, subject2, subject3)
+student.display_scorecard()
+```
+
+10. Program to create a BankAccount class and perform account operations:
+
+```python
+class BankAccount:
+    def __init__(self, account_number, balance):
+        self.account_number = account_number
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"Deposited ${amount}. New balance: ${self.balance}")
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            print(f"Withdrew ${amount}. New balance: ${self.balance}")
+        else:
+            print("Insufficient balance")
+
+    def display_balance(self):
+        print(f"Account Number: {self.account_number}")
+        print(f"Balance: ${self.balance}")
+
+
+
+account_number = input("Enter account number: ")
+initial_balance = float(input("Enter initial balance: "))
+
+account = BankAccount(account_number, initial_balance)
+
+while True:
+    print("\nMenu:")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Display Balance")
+    print("4. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        amount = float(input("Enter the amount to deposit: "))
+        account.deposit(amount)
+    elif choice == 2:
+        amount = float(input("Enter the amount to withdraw: "))
+        account.withdraw(amount)
+    elif choice == 3:
+        account.display_balance()
+    elif choice == 4:
+        print("Thank you for using our banking system!")
+        break
+    else:
+        print("Invalid choice. Please select a valid option.")
+```
+
+These programs cover a range of basic programming concepts in Python. You can run each program separately in a Python environment to see how they work.
